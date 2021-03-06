@@ -15,8 +15,34 @@
  */
 
 #include "bm68rgb.h"
+// stolen from bm60rgb.c word for word
+void matrix_init_kb(void) {
+    // put your keyboard start-up code here
+    // runs once when the firmware starts up
 
-#ifdef RGB_MATRIX_ENABLE
+    matrix_init_user();
+}
+
+void matrix_scan_kb(void) {
+    // put your looping keyboard code here
+    // runs every cycle (a lot)
+
+    matrix_scan_user();
+}
+
+bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+    // put your per-action keyboard code here
+    // runs for every action, just before processing by the firmware
+
+    return process_record_user(keycode, record);
+}
+
+void led_set_kb(uint8_t usb_led) {
+    // put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
+
+    led_set_user(usb_led);
+}
+
 led_config_t g_led_config = { {
     // Key Matrix to LED Index
     { 0,      1,      2,      3,      4,      5,      6,      7,      8,      9,      10,     11,     12,     13,     14 },
@@ -44,16 +70,16 @@ led_config_t g_led_config = { {
     //need to recheck what should be a modifier
 
     // Esc, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -, =, Backspace, Delete
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
+    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4,
     // Tab, Q, W, E, R, T, Y, U, I, O, P, [, ], backslash , Home
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
+    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
     // Capslock, A, S, D, F, G, H, J, K, L, ;, ', Enter, Page up
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
+    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
     // LShift, Z, X, C, V, B, N, M, ,, ., /, Shift, Up, Page Down
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1,
+    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4,
     // Ctrl, GUI, Alt, Space, RAlt, FN, Ctrl, Left, Down, Right
-    1, 1, 1, 4, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 4, 1, 1, 1, 4, 4, 4,
     // UNDERGLOW
     2, 2, 2, 2, 2, 2
 } };
-#endif
+
