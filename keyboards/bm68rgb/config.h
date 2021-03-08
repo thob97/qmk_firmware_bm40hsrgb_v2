@@ -55,8 +55,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN E2
 // The number of LEDs connected
 #define DRIVER_LED_TOTAL 74
+
 #ifdef RGB_DI_PIN
-#define RGBLED_NUM 74
+#define RGBLED_NUM 6
+
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_KEYPRESSES
+
 //#    define RGBLIGHT_HUE_STEP 8
 //#    define RGBLIGHT_SAT_STEP 8
 //#    define RGBLIGHT_VAL_STEP 8
