@@ -27,31 +27,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // Layer 0 - Base Layer (F13 to F24, and One Shot Layer 1,2,3 or Toggle Layer 4)
         [0] = LAYOUT(
                         KC_MPLY, KC_MUTE,
-                KC_KP_7, KC_KP_8, KC_KP_9, KC_AUDIO_VOL_DOWN,
-                KC_KP_4, KC_KP_5, KC_KP_6, KC_CALCULATOR,
-                KC_KP_1, KC_KP_2, KC_KP_3, TG(2),    //Transparent to let you go between layers
-                KC_KP_0, KC_KP_0, KC_KP_0, TG(1)
+                TG(3), TG(2), TG(1), TG(0),
+                KC_PSCR, KC_SLCK, KC_PAUS, A(KC_F4),
+                KC_INS, KC_HOME, KC_PGUP, KC_F12,    //Transparent to let you go between layers
+                KC_DEL, A(KC_F4), KC_PGDN, KC_CALCULATOR
 
 		),
 
         [1] = LAYOUT(
                         KC_MPLY, KC_MUTE,
-                KC_F10, KC_F11, KC_F12,          KC_AUDIO_VOL_UP,
-                KC_F7, KC_F8, KC_F9,            KC_AUDIO_VOL_DOWN,
-                KC_F4, KC_F5, KC_F6,                KC_TRNS,
-                KC_F1,      KC_F2,      KC_F3,      KC_TRNS         //Transparent to let you go between layers
+                KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,
+                KC_F7, KC_F8, KC_F9,                KC_F10,
+                KC_F4, KC_F5, KC_F6,                KC_F11,
+                KC_F1,      KC_F2,      KC_F3,      KC_F12         //Transparent to let you go between layers
         ),
 
 
                 //Layer 5 - Keyboard Lights, Programming and Special Functions
         [2] = LAYOUT(
                         KC_MPLY, KC_MUTE,
+                KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS,         //Transparent to let you go between layers
                 RGB_MOD,  RGB_HUI, RGB_SAI,   RGB_VAI,
                 RGB_RMOD, RGB_HUD, RGB_SAD,   RGB_VAD,
-                RGB_TOG,  EEP_RST, RESET,     KC_TRNS,
-                KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS         //Transparent to let you go between layers
-        )
+                RGB_TOG,  EEP_RST, RESET,     KC_TRNS
+        ),
 
+        [3] = LAYOUT(
+                        KC_MPLY, KC_MUTE,
+                KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS,         //Transparent to let you go between layers
+                RGB_MOD,  RGB_HUI, RGB_SAI,   RGB_VAI,
+                RGB_RMOD, RGB_HUD, RGB_SAD,   RGB_VAD,
+                RGB_TOG,  EEP_RST, RESET,     KC_TRNS
+        )
 
 
         //Layer 0 - Base Layer (F13 to F24, and One Shot Layer 1,2,3 or Toggle Layer 4)
