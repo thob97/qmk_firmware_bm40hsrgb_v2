@@ -1,3 +1,18 @@
+/* Copyright 2021 peepeetee
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #pragma once
 
 
@@ -24,7 +39,11 @@
 // #define STRICT_LAYER_RELEASE        // Force a key release to be evaluated using the current layer stack instead of remembering which layer it came from (used for advanced cases)
 // #define LOCKING_SUPPORT_ENABLE      // Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap
 // #define LOCKING_RESYNC_ENABLE       // Tries to keep switch state consistent with keyboard LED state
+<<<<<<< HEAD
 // #define TAPPING_TERM 200            // How long before a tap becomes a hold, if set above 500, a key tapped during the tapping term will turn it into a hold too
+=======
+ #define TAPPING_TERM 200            // How long before a tap becomes a hold, if set above 500, a key tapped during the tapping term will turn it into a hold too
+>>>>>>> 84883d340045c50ce6c200c9087461c1db853898
 // #define TAPPING_TERM_PER_KEY        // Enables handling for per key TAPPING_TERM settings
 // #define RETRO_TAPPING               // Tap anyway, even after TAPPING_TERM, if there was no other key interruption between press and release
 // #define TAPPING_TOGGLE 2            // How many taps before triggering the toggle

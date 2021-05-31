@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* Copyright 2021 peepeetee
+=======
+/* Copyright 2019 ash0x0 2021 peepeetee
+>>>>>>> 84883d340045c50ce6c200c9087461c1db853898
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,13 +33,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TAB,    KC_Q,     KC_W,     KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,  KC_BSLS, KC_PGUP,
         KC_CAPS,       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,        KC_ENT,    KC_PGDOWN,
         KC_LSFT,         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,     KC_RSFT,     KC_UP,  KC_END,
+<<<<<<< HEAD
         KC_LCTL,   KC_LGUI,   KC_LALT,                     KC_SPC,                         KC_RALT,   MO(1),KC_RCTRL, KC_LEFT, KC_DOWN,  KC_RGHT
+=======
+        KC_LCTL,   KC_LGUI,LT(1, KC_LALT),                     KC_SPC,                         KC_RALT,   MO(1),KC_RCTRL, KC_LEFT, KC_DOWN,  KC_RGHT
+>>>>>>> 84883d340045c50ce6c200c9087461c1db853898
     ),
     [1] = LAYOUT_65_ansi(
         KC_GRAVE,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  _______,   KC_DELETE,
         RGB_MOD,   RGB_HUI, RGB_VAI, RGB_SAI, RGB_SPI, _______, KC_KP_7, KC_KP_8, KC_KP_9, _______, _______, _______, _______,  _______, KC_PGUP,
         RGB_TOG,    RGB_HUD, RGB_VAD, RGB_SAD, RGB_SPD, _______, KC_KP_4, KC_KP_5, KC_KP_6, _______, _______, _______,       _______,    KC_PGDOWN,
+<<<<<<< HEAD
         _______,      _______, _______, _______, _______,   RESET, KC_KP_1, KC_KP_2, KC_KP_3, _______, _______,     _______,   KC_AUDIO_VOL_UP,  KC_END,
+=======
+        BL_TOGG,      _______, _______, _______, _______,   RESET, KC_KP_1, KC_KP_2, KC_KP_3, _______, _______,     _______,   KC_AUDIO_VOL_UP,  KC_END,
+>>>>>>> 84883d340045c50ce6c200c9087461c1db853898
         _______,   _______,   _______,                    _______,                         _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_AUDIO_VOL_DOWN,  KC_BRIGHTNESS_UP
     ),
 
@@ -237,6 +249,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     //     // Do something else when release
     //   }
     //   return false; // Skip all further processing of this key
+            case RGB_TOG:
+            if (record->event.pressed) {
+              switch (rgb_matrix_get_flags()) {
+                case LED_FLAG_ALL: {
+                    rgb_matrix_set_flags(LED_FLAG_KEYLIGHT | LED_FLAG_MODIFIER | LED_FLAG_INDICATOR);
+                    rgb_matrix_set_color_all(0, 0, 0);
+                  }
+                  break;
+                case (LED_FLAG_KEYLIGHT | LED_FLAG_MODIFIER | LED_FLAG_INDICATOR): {
+                    rgb_matrix_set_flags(LED_FLAG_UNDERGLOW);
+                    rgb_matrix_set_color_all(0, 0, 0);
+                  }
+                  break;
+                case LED_FLAG_UNDERGLOW: {
+                    rgb_matrix_set_flags(LED_FLAG_NONE);
+                    rgb_matrix_disable_noeeprom();
+                  }
+                  break;
+                default: {
+                    rgb_matrix_set_flags(LED_FLAG_ALL);
+                    rgb_matrix_enable_noeeprom();
+                  }
+                  break;
+              }
+            }
+            return false;
     default:
       return true; // Process all other keycodes normally
   }

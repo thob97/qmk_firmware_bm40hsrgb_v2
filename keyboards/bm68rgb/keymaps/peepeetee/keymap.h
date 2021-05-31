@@ -1,6 +1,21 @@
+/* Copyright 2019 ash0x0 2021 peepeetee
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include QMK_KEYBOARD_H
 
-#include <print.h>
+#include "print.h"
 #include <string.h>
 // HID has not yet been implemented for this keyboard
 // #include "raw_hid.h"
@@ -34,7 +49,10 @@
 #define RGB_TIME_OUT_STEP 10
 
 extern bool g_suspend_state;
+<<<<<<< HEAD
 extern rgb_config_t rgb_matrix_config;
+=======
+>>>>>>> 84883d340045c50ce6c200c9087461c1db853898
 bool disable_layer_color;
 
 uint8_t dfa_state;  //state for my language switching DFA
