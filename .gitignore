@@ -68,9 +68,6 @@ CMakeLists.txt
 tags
 
 # Ignore image files
-*.gif
-*.jpg
-*.png
 
 # Things Travis sees
 /.vs
