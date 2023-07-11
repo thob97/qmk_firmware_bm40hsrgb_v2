@@ -47,52 +47,52 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         case RMT:
-        if (record->event.pressed){
+            if (record->event.pressed){
                 rgb_matrix_toggle();
-                return false;
             }
+            return false;
 
         case RMS:
             if (record->event.pressed){
                 rgb_matrix_step();
-                return false;
             }
+            return false;
 
         case RMIH:
             if (record->event.pressed){
                 rgb_matrix_increase_hue();
-                return false;
             }
+            return false;
 
         case RMDH:
             if (record->event.pressed){
                 rgb_matrix_decrease_hue();
-                return false;
             }
+            return false;
 
         case RMIS:
             if (record->event.pressed){
                 rgb_matrix_increase_sat();
-                return false;
             }
+            return false;
 
         case RMDS:
             if (record->event.pressed){
                 rgb_matrix_decrease_sat();
-                return false;
             }
+            return false;
 
         case RMIV:
             if (record->event.pressed){
                 rgb_matrix_increase_val();
-                return false;
             }
+            return false;
 
         case RMDV:
             if (record->event.pressed){
                 rgb_matrix_decrease_val();
-                return true;
             }
+            return true;
 
         //my custom code
         static uint16_t fnx_layer_timer;
@@ -149,10 +149,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    ),
 
 [3] = LAYOUT_planck_mit(
-RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, KC_NO, KC_NO, KC_NO, KC_F7, KC_F8, KC_F9, KC_F10, /*LSFT(LAG(KC_ESC))*/KC_DEL,
-RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, RMT, KC_NO, KC_NO, KC_F4, KC_F5, KC_F6, KC_F11, RSG(KC_5),
-RMS, RMIH, RMDH, RMIS, RMDS, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F12, KC_RSFT,
-RMIV, RMDV, KC_NO, KC_TRNS, KC_NO, TD(MySafeReset), RSG(KC_GRV), RCTL(KC_4),  RCS(KC_4),  RGUI(KC_GRV), KC_RGUI),
+KC_NO, RMT, RMS, RMIH, RMDH, KC_NO, KC_NO, KC_F7, KC_F8, KC_F9, KC_F10, /*LSFT(LAG(KC_ESC))*/KC_DEL,
+KC_NO, RMIS, RMDS, RMIV, RMDV, KC_NO, KC_NO, KC_F4, KC_F5, KC_F6, KC_F11, RSG(KC_5),
+KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F12, KC_RSFT,
+KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, TD(MySafeReset), RSG(KC_GRV), RCTL(KC_4),  RCS(KC_4),  RGUI(KC_GRV), KC_RGUI),
 
 [4] = LAYOUT_planck_mit(
 KC_NO, KC_NO, KC_NO, RALT(KC_U), RALT(KC_A), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
