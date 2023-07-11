@@ -6,7 +6,7 @@
     <img src="./keyboards/kprepublic/bm40hsrgb/rev2/_github_example_pictures/1.jpeg"  width="40%" height="40%">
 </p>
 
-Forked from qmk firmware und so angepasst, sodass mein bm40hsrgb v2 keyboard mit meinem custom [Neo Bone layout](https://www.neo-layout.org/Layouts/bone/) funktioniert. Benutzt mehrere Layers und Taps_word (Caps_Word).
+Forked from QMK firmware and modified to enable my BM40HSRGB v2 keyboard work with my custom [Neo Bone layout](https://www.neo-layout.org/Layouts/bone/). Utilizes multiple layers and Taps_Word (Caps_Word).
 
 ## Table Of Content
 
@@ -28,18 +28,18 @@ In order for the scripts to work you will need the following dependencies:
  * make
 
 ### Installation
- - make sure that your pc uses an english keyboard layout. But for maximum compatibility use [EurKey](https://eurkey.steffen.bruentjen.eu/layout.html) 
+ - Ensure that your PC is set to use an English keyboard layout. However, for maximum compatibility, consider using [EurKey](https://eurkey.steffen.bruentjen.eu/layout.html).
  - `git clone https://github.com/thob97/qmk_firmware_bm40hsrgb_v2_Neo_Bone.git`
- - `cd qmk_firmware_bm40hsrgb_v2_Neo_Bone/keyboards/kprepublic/bm40hsrgb/rev2/`
+ - `cd qmk_firmware_bm40hsrgb_v2_Neo_Bone`
 
 ### Compile and run
+ - `make git-submodule`
  - `make kprepublic/bm40hsrgb/rev2:default:flash`
  - `echo 'PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc && source $HOME/.bashrc`
 
 ## Vizualise Keymap:
-The pdf for a visualized representation of the keymap was created with: https://config.qmk.fm/#/kprepublic/bm40hsrgb/LAYOUT_planck_mit.
-This is for visual representation only! Some keys differ with this json file/ on this website, as they can not be represented on them. (e.g. reset key needs to be pressed 10times for ist functionality -> this can not be represented in the website )
-
+The PDF file, which provides a visualized representation of the keymap, was generated using: https://config.qmk.fm/#/kprepublic/bm40hsrgb/LAYOUT_planck_mit.
+Please note that this visualization is for illustrative purposes only. Some keys may differ from the JSON file or the website because certain functionalities cannot be accurately represented (e.g., I have implemented a feature that protects against accidental pressing of the reset key. The key must be pressed 10 times for its functionality. This cannot be visualized on the website).
 
 ## Example pictures
 <p float="left">
