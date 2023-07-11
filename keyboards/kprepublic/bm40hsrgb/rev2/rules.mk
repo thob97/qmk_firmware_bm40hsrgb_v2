@@ -7,6 +7,8 @@ BOOTLOADER = atmel-dfu
 # Build Options
 #   change yes to no to disable
 #
+SRC += features/caps_word.c
+CAPS_WORD_ENABLE = no
 BOOTMAGIC_ENABLE = yes        # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = no          # Mouse keys
 EXTRAKEY_ENABLE = yes          # Audio control and System control
@@ -20,5 +22,6 @@ AUDIO_ENABLE = no              # Audio output on port C6
 RGB_MATRIX_ENABLE = yes        # Use RGB matrix
 RGB_MATRIX_DRIVER = IS31FL3733
 LAYOUTS = planck_mit
+TAP_DANCE_ENABLE = yes
 
 LTO_ENABLE = yes
