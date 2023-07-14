@@ -16,6 +16,7 @@ Forked from QMK firmware and modified to enable my BM40HSRGB v2 keyboard work wi
   - [Compile and run](#compile-and-run)
 - [Vizualise Keymap](#vizualise-keymap)
 - [Example pictures](#example-pictures)
+- [See also](#see-also)
 - [Original readme of forked repo](#quantum-mechanical-keyboard-firmware)
 
 
@@ -54,6 +55,13 @@ Please note that this visualization is for illustrative purposes only. Some keys
     <img src="./keyboards/kprepublic/bm40hsrgb/rev2/_github_example_pictures/layer5.png"  width="48%" height="48%">
 
 </p>
+
+
+## See also
+You may also be interested in the following projects:
+* [3D printed beamer](https://github.com/thob97/3d_printed_beamer.git)
+* [Custom 10 inch server rack](https://github.com/thob97/custom_10_inch_server_rack.git)
+* [3040 CNC marlin](https://github.com/thob97/3040-CNC-marlin.git)
 
 <br>
 <br>
