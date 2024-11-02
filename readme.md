@@ -30,7 +30,7 @@ In order for the scripts to work you will need the following dependencies:
  * make
 
 ### Installation
- - Ensure that your PC is set to use an English keyboard layout. However, for maximum compatibility, consider using [EurKey](https://eurkey.steffen.bruentjen.eu/layout.html).
+ - For maximum compatibility ensure that your PC is set to use the English International keyboard layout.
  - `git clone https://github.com/thob97/qmk_firmware_bm40hsrgb_v2_Neo_Bone.git`
  - `cd qmk_firmware_bm40hsrgb_v2_Neo_Bone`
 
