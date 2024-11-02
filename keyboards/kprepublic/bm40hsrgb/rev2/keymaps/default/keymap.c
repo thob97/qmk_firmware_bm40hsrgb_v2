@@ -15,6 +15,8 @@
  */
 #include QMK_KEYBOARD_H
 #include "features/caps_word.h"
+#include "keymap_us_international.h"
+#include "sendstring_us_international.h"
 
 enum my_keycodes {
     RMT = SAFE_RANGE,
@@ -25,8 +27,15 @@ enum my_keycodes {
     RMDS,
     RMIV,
     RMDV,
-    MyM3,
-    MySafeReset = 0,
+    myDQ,
+    mySQ,
+    myAE,
+    myOE,
+    myUE,
+    myGRV,
+    myTILD,
+    myCIRC,
+    MySafeReset=0,
 };
 
 void safe_reset(qk_tap_dance_state_t *state, void *user_data) {
@@ -45,82 +54,82 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_caps_word(keycode, record)) { return false; }
 
-    switch (keycode) {
-        case RMT:
-            if (record->event.pressed){
+    if (record->event.pressed) {
+        switch (keycode) {
+            // MARK: RGB
+            case RMT:
                 rgb_matrix_toggle();
-            }
-            return false;
+                return false;
 
-        case RMS:
-            if (record->event.pressed){
+            case RMS:
                 rgb_matrix_step();
-            }
-            return false;
+                return false;
 
-        case RMIH:
-            if (record->event.pressed){
+            case RMIH:
                 rgb_matrix_increase_hue();
-            }
-            return false;
+                return false;
 
-        case RMDH:
-            if (record->event.pressed){
+            case RMDH:
                 rgb_matrix_decrease_hue();
-            }
-            return false;
+                return false;
 
-        case RMIS:
-            if (record->event.pressed){
+            case RMIS:
                 rgb_matrix_increase_sat();
-            }
-            return false;
+                return false;
 
-        case RMDS:
-            if (record->event.pressed){
+            case RMDS:
                 rgb_matrix_decrease_sat();
-            }
-            return false;
+                return false;
 
-        case RMIV:
-            if (record->event.pressed){
+            case RMIV:
                 rgb_matrix_increase_val();
-            }
-            return false;
+                return false;
 
-        case RMDV:
-            if (record->event.pressed){
+            case RMDV:
                 rgb_matrix_decrease_val();
-            }
-            return true;
+                return true;
 
-        //my custom code
-        static uint16_t fnx_layer_timer;
-        case MyM3:
-            if(record->event.pressed){
-                fnx_layer_timer = timer_read();
-                layer_on(3);
-            } else {
-                layer_off(3);
-                if (timer_elapsed(fnx_layer_timer) < TAPPING_TERM) {
-                    set_oneshot_layer(3, ONESHOT_START);
-                }
-            }
-            return false;
-            break;
+            // MARK: my custom code
+            case myDQ:
+                send_string("\"");     // " // works due import sendString
+                return false;
+            case mySQ:
+                send_string("'");      // ' // works due import sendString
+                return false;
+            case myAE:                 // ü // buggy, import keymap does not work -> use workaround
+                tap_code16(KC_DQUO);   // " 
+                tap_code(KC_A);        // u
+                return false;
+            case myOE:                 // ö // buggy, import keymap does not work -> use workaround
+                tap_code16(KC_DQUO);   // " 
+                tap_code(KC_O);        // o
+                return false;
+            case myUE:                 // ü // buggy, import keymap does not work -> use workaround
+                tap_code16(KC_DQUO);   // " 
+                tap_code(KC_U);        // u
+                return false;
+            case myGRV:                 
+                send_string("`");      // ` // works due import sendString
+                return false;
+            case myTILD:
+                send_string("~");      // ~ // works due import sendString
+                return false;
+            case myCIRC:
+                send_string("^");      // ^ // works due import sendString
+                return false;
+            default:
+                //clear_oneshot_mods();
+                clear_oneshot_layer_state(ONESHOT_PRESSED);
+                return true;
+        }
+    
+        // Detect the activation of both Shifts
+        if ((get_mods() & MOD_MASK_SHIFT) == MOD_MASK_SHIFT)
+        {
+            // Toggle Caps_lock value
+            tap_code(KC_CAPS);
+        }
 
-
-        default:
-            //clear_oneshot_mods();
-            clear_oneshot_layer_state(ONESHOT_PRESSED);
-            return true;
-    }
-
-    // Detect the activation of both Shifts
-    if ((get_mods() & MOD_MASK_SHIFT) == MOD_MASK_SHIFT)
-    {
-        // Toggle Caps_lock value
-        tap_code(KC_CAPS);
     }
 
     return true;
@@ -135,9 +144,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 [1] = LAYOUT_planck_mit(
-    KC_NO, KC_NO, KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC, KC_EXLM, KC_LT, KC_GT, KC_EQL, KC_AMPR, KC_BSPC,
+    KC_NO, KC_NO, KC_UNDS, KC_LBRC, KC_RBRC, myCIRC, KC_EXLM, KC_LT, KC_GT, KC_EQL, KC_AMPR, KC_BSPC,
     KC_NO, KC_BSLS, KC_SLSH, KC_LCBR, KC_RCBR, KC_PAST, KC_QUES, KC_LPRN, KC_RPRN, KC_PMNS, KC_COLN, KC_AT,
-    KC_NO, KC_HASH, KC_DLR, KC_PIPE, KC_TILD, KC_GRV, KC_PPLS, KC_PERC, KC_DQUO, KC_QUOT, KC_SCLN, KC_NO,
+    KC_NO, KC_HASH, KC_DLR, KC_PIPE, myTILD, myGRV, KC_PPLS, KC_PERC, myDQ, mySQ, KC_SCLN, KC_NO,
     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, LAG(KC_LBRC), LAG(KC_LCBR), LAG(KC_RCBR), LAG(KC_RBRC), KC_NO
    ),
 
@@ -155,8 +164,8 @@ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F12, KC
 KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, TD(MySafeReset), RSG(KC_GRV), RCTL(KC_4),  RCS(KC_4),  RGUI(KC_GRV), KC_RGUI),
 
 [4] = LAYOUT_planck_mit(
-KC_NO, KC_NO, KC_NO, RALT(KC_U), RALT(KC_A), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
-KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RALT(KC_O), KC_NO, KC_NO, KC_NO, RALT(KC_S), KC_NO, KC_NO, 
+KC_NO, KC_NO, KC_NO, myUE, myAE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
+KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, myOE, KC_NO, KC_NO, KC_NO, RALT(KC_S), KC_NO, KC_NO, 
 KC_LSFT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_RSFT, 
 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
 
