@@ -26,6 +26,7 @@ Forked from QMK firmware and modified to enable my BM40HSRGB v2 keyboard work wi
 
 In order for the scripts to work you will need the following dependencies:
  * C compiler
+ * qmk (& qmk setup)
  * make
 
 ### Installation
